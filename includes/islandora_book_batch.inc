@@ -479,7 +479,7 @@ class IslandoraBookPageBatchObject extends IslandoraFlatBatchObject {
     $paged_cmodels = islandora_paged_content_retrieve_applicable_cmodels();
     foreach ($this->preprocessorParameters['content_models'] as $parent_model) {
       if (isset($paged_cmodels[$parent_model]['children'])) {
-        $chid_models = array_merge($chid_models, array_keys($paged_cmodels[$parent_model]['children']));
+        $child_models = array_merge($child_models, array_keys($paged_cmodels[$parent_model]['children']));
       }
     }
     $child_models = array_unique($child_models);
