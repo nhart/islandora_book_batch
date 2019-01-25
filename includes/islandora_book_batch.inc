@@ -475,16 +475,16 @@ class IslandoraBookPageBatchObject extends IslandoraFlatBatchObject {
     islandora_paged_content_set_relationship($rels_ext, FEDORA_RELS_EXT_URI, 'isMemberOf', $this->parentId);
 
     // Add content model relationship.
-    $chid_models = array();
+    $child_models = array();
     $paged_cmodels = islandora_paged_content_retrieve_applicable_cmodels();
     foreach ($this->preprocessorParameters['content_models'] as $parent_model) {
       if (isset($paged_cmodels[$parent_model]['children'])) {
         $chid_models = array_merge($chid_models, array_keys($paged_cmodels[$parent_model]['children']));
       }
     }
-    $chid_models = array_unique($chid_models);
-    if (!empty($chid_models)) {
-      $this->models = $chid_models;
+    $child_models = array_unique($child_models);
+    if (!empty($child_models)) {
+      $this->models = $child_models;
     }
     else {
       $this->models = 'islandora:pageCModel';
